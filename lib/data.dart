@@ -10,7 +10,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late List<UserModel>? _userModel = [];
+  MockTest? _userModel;
   @override
   void initState() {
     super.initState();
@@ -28,38 +28,50 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: const Text('REST API Example'),
       ),
-      body: _userModel == null || _userModel!.isEmpty
+      body: _userModel == null
           ? const Center(
               child: CircularProgressIndicator(),
             )
-          : ListView.builder(
-              itemCount: _userModel!.length,
-              itemBuilder: (context, index) {
-                return Card(
+            : Card(
                   child: Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(_userModel![index].id.toString()),
-                          Text(_userModel![index].username),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(_userModel![index].email),
-                          Text(_userModel![index].website),
-                        ],
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(_userModel!.parent.child),
+                          ],
                       ),
                     ],
                   ),
-                );
-              },
-            ),
+              ),
+          // : ListView.builder(
+          //     itemCount: _userModel!.length,
+          //     itemBuilder: (context, index) {
+          //       return Card(
+          //         child: Column(
+          //           children: [
+          //             Row(
+          //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //               children: [
+          //                 Text(_userModel![index].id.toString()),
+          //                 Text(_userModel![index].username),
+          //               ],
+          //             ),
+          //             const SizedBox(
+          //               height: 20.0,
+          //             ),
+          //             Row(
+          //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //               children: [
+          //                 Text(_userModel![index].email),
+          //                 Text(_userModel![index].website),
+          //               ],
+          //             ),
+          //           ],
+          //         ),
+          //       );
+          //     },
+          //   ),
     );
   }
 }
